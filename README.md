@@ -439,5 +439,48 @@ GET http://127.0.0.1:8080/doc/delete
 	  }
 	}
 	
+	
+Analyzing HAL-FORMS documents: GET http://127.0.0.1:8080/doc/modify
+====================================================================
+
+	"_embedded": {
+	    "halforms:cashAccountList": [
+	      {
+	        "number": "1111201202332",
+	        "availableBalance": 1250.3,
+	        "description": "Cash Account 1"
+	      },
+	      {
+	        "number": "2222230102332",
+	        "availableBalance": 250.3,
+	        "description": "Cash Account 2"
+	      },
+	      {
+	        "number": "3333299999332",
+	        "availableBalance": 7250.3,
+	        "description": "Cash Account 3"
+	      },
+	      {
+	        "number": "5555501202332",
+	        "availableBalance": 5250.9,
+	        "description": "Cash Account 4"
+	      }
+	    ]
+	  }
+	  
+Embedded HAL resources, they will be used in Suggest properties (Options)
+
+### Properties
+
+A) Amount
+
+	{
+	  "name": "amount",
+	  "readOnly": false,
+	  "required": true
+	}
+	
+B) Date
+
 
 	
