@@ -5,6 +5,7 @@ import static de.escalon.hypermedia.spring.AffordanceBuilder.methodOn;
 
 import org.hdiv.spring.boot.hateoas.sample.beans.Transfer;
 import org.hdiv.spring.boot.hateoas.sample.controllers.TransferController;
+import org.hdiv.spring.boot.hateoas.sample.controllers.TransferController.Operations;
 import org.springframework.hateoas.Resource;
 
 import de.escalon.hypermedia.spring.AffordanceBuilder;
@@ -15,12 +16,10 @@ public class TransferResource extends Resource<Transfer> {
 		super(transfer);
 
 		add(linkTo(methodOn(TransferController.class).get(transfer.getId())).withSelfRel());
-		AffordanceBuilder editTransferBuilder = linkTo(
-				methodOn(TransferController.class).modifyTransfer(transfer.getId(), transfer, null, null));
-		add(editTransferBuilder.withRel("modify"));
-		AffordanceBuilder deleteTransferBuilder = linkTo(methodOn(TransferController.class).deleteTransfer(transfer.getId(), null));
-		add(deleteTransferBuilder.withRel("delete"));
-
+		AffordanceBuilder editTransferBuilder = linkTo(methodOn(TransferController.class).modifyTransfer(transfer.getId(), transfer, null));
+		add(editTransferBuilder.withRel(Operations.MODIFY.toRel()));
+		AffordanceBuilder deleteTransferBuilder = linkTo(methodOn(TransferController.class).deleteTransfer(transfer.getId()));
+		add(deleteTransferBuilder.withRel(Operations.DELETE.toRel()));
 	}
 
 }

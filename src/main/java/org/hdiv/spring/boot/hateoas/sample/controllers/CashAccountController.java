@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Returns the cash accounts to be used in Transfers, in this example no other operation can be done on Accounts
+ * @author anderruiz
+ *
+ */
 @RestController
 @RequestMapping("/api/cashaccounts")
 public class CashAccountController {

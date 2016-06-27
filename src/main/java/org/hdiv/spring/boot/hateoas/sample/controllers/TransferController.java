@@ -3,7 +3,6 @@ package org.hdiv.spring.boot.hateoas.sample.controllers;
 import static de.escalon.hypermedia.spring.AffordanceBuilder.linkTo;
 import static de.escalon.hypermedia.spring.AffordanceBuilder.methodOn;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +11,7 @@ import javax.validation.Valid;
 
 import org.hdiv.spring.boot.hateoas.sample.beans.Transfer;
 import org.hdiv.spring.boot.hateoas.sample.beans.TransferStatus;
+import org.hdiv.spring.boot.hateoas.sample.beans.TransferType;
 import org.hdiv.spring.boot.hateoas.sample.hateoas.TransferResource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.Resource;
@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import de.escalon.hypermedia.action.Input;
 import de.escalon.hypermedia.action.Type;
-import de.escalon.hypermedia.spring.AffordanceBuilder;
 
 @RestController
 @RequestMapping(value = "/api/transfer")
@@ -37,16 +36,16 @@ public class TransferController {
 	List<Transfer> transfers = new ArrayList<>();
 
 	public TransferController() {
-
+		transfers.add(new Transfer(1, "1111201202332", "3333299999332", "Transfer1", 12.3, new Date(0), TransferType.INTERNATIONAL,
+				TransferStatus.COMPLETED, "ander@dummy.com"));
+		transfers.add(new Transfer(2, "3333299999332", "1111201202332", "Transfer2", 15.3, new Date(1000), TransferType.NATIONAL,
+				TransferStatus.PENDING, "ander@dummy.com"));
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Resource<Transfer>> transfer(@Valid @RequestBody final Transfer transfer, final BindingResult bindingResult) {
 
 		transfer.setDate(new Date());
-
-		double amount = transfer.getAmount();
-		transfer.setAmount(round(amount, 2));
 
 		transfers.add(transfer);
 
@@ -58,12 +57,9 @@ public class TransferController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Resource<Transfer>> modifyTransfer(@PathVariable("id") final Integer id,
-			@Valid @RequestBody final Transfer transfer, final BindingResult bindingResult, final Principal principal) {
+			@Valid @RequestBody final Transfer transfer, final BindingResult bindingResult) {
 
 		transfer.setDate(new Date());
-
-		double amount = transfer.getAmount();
-		transfer.setAmount(round(amount, 2));
 
 		transfers.remove(findById(transfer.getId()));
 		transfers.add(transfer);
@@ -74,7 +70,7 @@ public class TransferController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Object> deleteTransfer(@PathVariable("id") final Integer id, final Principal principal) {
+	public ResponseEntity<Object> deleteTransfer(@PathVariable("id") final Integer id) {
 
 		transfers.remove(findById(id));
 
@@ -84,11 +80,8 @@ public class TransferController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Resource<Transfer> get(@Input(required = true, pattern = "^[1-9]\\d*$") @PathVariable("id") final Integer id) {
 		Transfer transfer = findById(id);
-
 		Resource<Transfer> resource = new TransferResource(transfer);
-		AffordanceBuilder editTransferBuilder = linkTo(methodOn(TransferController.class).modifyTransfer(id, transfer, null, null));
-
-		resource.add(linkTo(methodOn(TransferController.class).get(transfer.getId())).and(editTransferBuilder).withSelfRel());
+		resource.add(linkTo(methodOn(TransferController.class).get(transfer.getId())).withSelfRel());
 		return resource;
 	}
 
@@ -102,7 +95,7 @@ public class TransferController {
 
 		return new Resources<TransferResource>(resources, linkTo(methodOn(TransferController.class).get()).withSelfRel(),
 				linkTo(methodOn(TransferController.class).getFiltered((Date) null, (Date) null, null))
-						.withRel("list-after-date-transfers"));
+						.withRel(Operations.LIST_AFTER_DATE_TRANSFERS.toRel()));
 	}
 
 	@RequestMapping(value = "/filter", method = RequestMethod.GET)
@@ -119,18 +112,8 @@ public class TransferController {
 		}
 
 		return new Resources<TransferResource>(resources, linkTo(methodOn(TransferController.class).get()).withSelfRel(),
-				linkTo(methodOn(TransferController.class).getFiltered(dateFrom, dateTo, status)).withRel("list-after-date-transfers"));
-	}
-
-	public static double round(double value, final int places) {
-		if (places < 0) {
-			throw new IllegalArgumentException();
-		}
-
-		long factor = (long) Math.pow(10, places);
-		value = value * factor;
-		long tmp = Math.round(value);
-		return (double) tmp / factor;
+				linkTo(methodOn(TransferController.class).getFiltered(dateFrom, dateTo, status))
+						.withRel(Operations.LIST_AFTER_DATE_TRANSFERS.toRel()));
 	}
 
 	private Transfer findById(final int id) {
@@ -140,6 +123,18 @@ public class TransferController {
 			}
 		}
 		return null;
+	}
+
+	public enum Operations {
+		LIST_AFTER_DATE_TRANSFERS, MODIFY, DELETE, MAKE_TRANSFER;
+
+		public String toRel() {
+			return name().toLowerCase().replace("_", "-");
+		}
+
+		public boolean equals(final String rel) {
+			return toRel().equals(rel);
+		}
 	}
 
 }
