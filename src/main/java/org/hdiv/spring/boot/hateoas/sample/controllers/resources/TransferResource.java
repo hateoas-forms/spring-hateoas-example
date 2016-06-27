@@ -1,4 +1,4 @@
-package org.hdiv.spring.boot.hateoas.sample.hateoas;
+package org.hdiv.spring.boot.hateoas.sample.controllers.resources;
 
 import static de.escalon.hypermedia.spring.AffordanceBuilder.linkTo;
 import static de.escalon.hypermedia.spring.AffordanceBuilder.methodOn;

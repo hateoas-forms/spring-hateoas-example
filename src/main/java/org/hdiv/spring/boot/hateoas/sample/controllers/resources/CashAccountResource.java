@@ -1,4 +1,4 @@
-package org.hdiv.spring.boot.hateoas.sample.hateoas;
+package org.hdiv.spring.boot.hateoas.sample.controllers.resources;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;

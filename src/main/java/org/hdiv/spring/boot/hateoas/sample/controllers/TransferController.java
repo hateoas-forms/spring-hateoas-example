@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import org.hdiv.spring.boot.hateoas.sample.beans.Transfer;
 import org.hdiv.spring.boot.hateoas.sample.beans.TransferStatus;
 import org.hdiv.spring.boot.hateoas.sample.beans.TransferType;
-import org.hdiv.spring.boot.hateoas.sample.hateoas.TransferResource;
+import org.hdiv.spring.boot.hateoas.sample.controllers.resources.TransferResource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;

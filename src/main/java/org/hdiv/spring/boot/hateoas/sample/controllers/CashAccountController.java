@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hdiv.spring.boot.hateoas.sample.beans.CashAccount;
-import org.hdiv.spring.boot.hateoas.sample.hateoas.CashAccountResource;
+import org.hdiv.spring.boot.hateoas.sample.controllers.resources.CashAccountResource;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.RequestMapping;
