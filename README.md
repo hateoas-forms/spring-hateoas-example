@@ -53,7 +53,6 @@ Additionally documentation links are provided in this URL template http://127.0.
 
 * [halforms:make-transfer](http://127.0.0.1:8080/doc/make-transfer): HAL-FORMS document for POSTing a transfer
 
-
 	{
 	  "_embedded": {
 	    "halforms:cashAccountList": [
