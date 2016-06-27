@@ -1,3 +1,7 @@
+1. [Example](#spring-boot-hateoas-example)
+2. [How to build the application](#How%20to%20build%20the%20application)
+3. [Entry point GET /api/](#"Entry point GET /api/")
+
 spring-boot-hateoas-example
 =======================
 
