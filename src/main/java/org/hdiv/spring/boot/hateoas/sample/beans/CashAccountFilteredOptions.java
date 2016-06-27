@@ -15,6 +15,6 @@ public class CashAccountFilteredOptions implements Options<String> {
 	@Override
 	public Suggest<String>[] get(final SuggestType type, final String[] value, final Object... args) {
 		Link link = AffordanceBuilder.linkTo(AffordanceBuilder.methodOn(CashAccountController.class).search(null)).withSelfRel();
-		return SuggestImpl.wrap(Arrays.asList(link.getHref()), null, "description", SuggestType.REMOTE);
+		return SuggestImpl.wrap(Arrays.asList(link.getHref()), "number", "description", SuggestType.REMOTE);
 	}
 }

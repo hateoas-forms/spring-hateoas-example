@@ -511,6 +511,7 @@ Embedded/External Suggest field annotated as @Select
 
 	@Select(options = CashAccountOptions.class)	
 	
+And the Options class definition is:	
 	
 	@Override
 	public Suggest<CashAccount>[] get(final SuggestType type, final String[] value, final Object... args) {
@@ -540,7 +541,73 @@ D) Status
 	  ]
 	}
 	
-Direct Suggest, valid options are directly included inside the field
+Direct Suggest, valid options are directly included inside the field, in this case it is not required to be annotated as the field is a enumerated type so it is directly handled by spring HATEOAS
 
+E) ToAccount
 
+	{
+	  "name": "toAccount",
+	  "readOnly": false,
+	  "suggest": {
+	    "href": "http://127.0.0.1:8080/api/cashaccounts/filter{?filter}",
+	    "prompt-field": "description"
+	  }
+	}
+	
+Remote Suggest field annotated as:
+
+	@Select(options = CashAccountFilteredOptions.class)
+	
+And the Options definition class is:
+
+	@Override
+	public Suggest<String>[] get(final SuggestType type, final String[] value, final Object... args) {
+		Link link = AffordanceBuilder.linkTo(AffordanceBuilder.methodOn(CashAccountController.class).search(null)).withSelfRel();
+		return SuggestImpl.wrap(Arrays.asList(link.getHref()), "number", "description", SuggestType.REMOTE);
+	}		
+
+Valid values for this fields could be retrieved by could the provided URI template, i.e.
+
+GET http://127.0.0.1:8080/api/cashaccounts/filter?filter=202
+
+	{
+	  "_embedded": {
+	    "halforms:cashAccountList": [
+	      {
+	        "number": "1111201202332",
+	        "availableBalance": 1250.3,
+	        "description": "Cash Account 1",
+	        "_links": {
+	          "self": {
+	            "href": "http://127.0.0.1:8080/api/cashaccounts"
+	          }
+	        }
+	      },
+	      {
+	        "number": "5555501202332",
+	        "availableBalance": 5250.9,
+	        "description": "Cash Account 4",
+	        "_links": {
+	          "self": {
+	            "href": "http://127.0.0.1:8080/api/cashaccounts"
+	          }
+	        }
+	      }
+	    ]
+	  },
+	  "_links": {
+	    "self": {
+	      "href": "http://127.0.0.1:8080/api/cashaccounts/filter?filter=202"
+	    },
+	    "curies": [
+	      {
+	        "href": "http://127.0.0.1:8080/doc/{rel}",
+	        "name": "halforms",
+	        "templated": true
+	      }
+	    ]
+	  }
+	}
+
+In this case two accounts match the filter
 	
