@@ -1,7 +1,3 @@
-1. [Example](#spring-boot-hateoas-example)
-2. [How to build the application](#How%20to%20build%20the%20application)
-3. [Entry point GET /api/](#"Entry point GET /api/")
-
 spring-boot-hateoas-example
 =======================
 
@@ -614,4 +610,18 @@ GET http://127.0.0.1:8080/api/cashaccounts/filter?filter=202
 	}
 
 In this case two accounts match the filter
+
+Operations on a transfer
+========================
+
+Create
+
+	curl -i -H "Content-Type: application/hal+json" -X POST -d '{"id":3,"amount":14, "description": "My transfer", "fromAccount":"1111201202332", "toAccount":"5555501202332", "status": "PENDING", "type":"NATIONAL"}' http://localhost:8080/api/transfer
 	
+Modify
+
+	curl -i -H "Content-Type: application/hal+json" -X PUT -d '{"id":3,"amount":14, "description": "My transfer Updated", "fromAccount":"1111201202332", "toAccount":"5555501202332", "status": "PENDING", "type":"NATIONAL"}' http://localhost:8080/api/transfer/3
+	
+Delete
+
+	curl -i -H "Content-Type: application/hal+json" -X DELETE http://localhost:8080/api/transfer/3

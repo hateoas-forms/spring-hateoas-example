@@ -2,8 +2,6 @@ package org.hdiv.spring.boot.hateoas.sample.beans;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 import de.escalon.hypermedia.action.Input;
 import de.escalon.hypermedia.action.Select;
 import de.escalon.hypermedia.action.Type;
@@ -32,7 +30,6 @@ public class Transfer {
 
 	}
 
-	@JsonCreator
 	public Transfer(final Integer id, final String fromAccount, final String toAccount, final String description, final double amount,
 			final Date date, final TransferType type, final TransferStatus status, final String email) {
 		this.id = id;
