@@ -51,7 +51,6 @@ Open this URL the application will show the main operations that can be done:
 
 Additionally documentation links are provided in this URL template http://127.0.0.1:8080/doc/{rel}, for now only HAL-FORMS documents are properly documented, in this first level the following documentation forms are available
 
-* [halforms:make-transfer](http://127.0.0.1:8080/doc/make-transfer): HAL-FORMS document for POSTing a transfer
 
 	{
 	  "_embedded": {
@@ -170,6 +169,9 @@ Additionally documentation links are provided in this URL template http://127.0.
 	  }
 	}
 
+
+
+* [halforms:make-transfer](http://127.0.0.1:8080/doc/make-transfer): HAL-FORMS document for POSTing a transfer
 
 * [halforms:list-after-date-transfers](http://127.0.0.1:8080/doc/list-after-date-transfers): HAL-FORMS document for filtering transfers by date (GET)
 
