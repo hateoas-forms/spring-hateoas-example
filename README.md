@@ -440,8 +440,10 @@ GET http://127.0.0.1:8080/doc/delete
 	}
 	
 	
-Analyzing HAL-FORMS documents: GET http://127.0.0.1:8080/doc/modify
-====================================================================
+Analyzing HAL-FORMS documents
+=============================
+
+GET http://127.0.0.1:8080/doc/modify
 
 	"_embedded": {
 	    "halforms:cashAccountList": [
@@ -470,7 +472,7 @@ Analyzing HAL-FORMS documents: GET http://127.0.0.1:8080/doc/modify
 	  
 Embedded HAL resources, they will be used in Suggest properties (Options)
 
-### Properties
+### Most Relevant Properties
 
 A) Amount
 
@@ -480,7 +482,65 @@ A) Amount
 	  "required": true
 	}
 	
+Amount is a required property and also editable
+
+	@Input(editable = true, required = true)
+	
 B) Date
+
+	{
+	  "name": "date",
+	  "readOnly": false
+	}
+	
+Date is not marked as required, no specific annotation is required, additionally the backend knows that is a Date field, HAL-FORMS however does not currently support a way to notify that
+
+C) FromAccount
+
+	{
+	  "name": "fromAccount",
+	  "readOnly": false,
+	  "suggest": {
+	    "embedded": "halforms:cashAccountList",
+	    "prompt-field": "description",
+	    "value-field": "number"
+	  }
+	}
+
+Embedded/External Suggest field annotated as @Select
+
+	@Select(options = CashAccountOptions.class)	
+	
+	
+	@Override
+	public Suggest<CashAccount>[] get(final SuggestType type, final String[] value, final Object... args) {
+		return SuggestImpl.wrap(controller.getCashAccounts(), "number", "description", SuggestType.EXTERNAL);
+	}
+	
+Valid options are included as embbedded properties ("halforms:cashAccountList") and the prompt (description) and the value (number) field are defined
+
+D) Status
+
+	{
+	  "name": "status",
+	  "readOnly": false,
+	  "suggest": [
+	    {
+	      "value": "COMPLETED",
+	      "prompt": "COMPLETED"
+	    },
+	    {
+	      "value": "REFUSED",
+	      "prompt": "REFUSED"
+	    },
+	    {
+	      "value": "PENDING",
+	      "prompt": "PENDING"
+	    }
+	  ]
+	}
+	
+Direct Suggest, valid options are directly included inside the field
 
 
 	
