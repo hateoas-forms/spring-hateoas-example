@@ -18,7 +18,7 @@ Run application packaged as a jar:
 Open [http://localhost:8080/api/](http://localhost:8080/api/) in your favorite browser.
 
 
-Entry point /api/
+Entry point GET /api/
 ============================
 
 	{
@@ -51,4 +51,142 @@ Open this URL the application will show the main operations that can be done:
 
 Additionally documentation links are provided in this URL template http://127.0.0.1:8080/doc/{rel}, for now only HAL-FORMS documents are properly documented, in this first level the following documentation forms are available
 
-* [halforms:make-transfer](http://127.0.0.1:8080/doc/make-transfer)
+* [halforms:make-transfer](http://127.0.0.1:8080/doc/make-transfer): HAL-FORMS document for POSTing a transfer
+* [halforms:list-after-date-transfers](http://127.0.0.1:8080/doc/list-after-date-transfers): HAL-FORMS document for filtering transfers by date (GET)
+
+	{
+	  "_links": {
+	    "self": {
+	      "href": "http://127.0.0.1:8080/doc/list-after-date-transfers"
+	    }
+	  },
+	  "_templates": {
+	    "default": {
+	      "method": "GET",
+	      "properties": [
+	        {
+	          "name": "dateFrom",
+	          "readOnly": false
+	        },
+	        {
+	          "name": "dateTo",
+	          "readOnly": false
+	        },
+	        {
+	          "name": "status",
+	          "readOnly": false,
+	          "suggest": [
+	            {
+	              "value": "COMPLETED",
+	              "prompt": "COMPLETED"
+	            },
+	            {
+	              "value": "REFUSED",
+	              "prompt": "REFUSED"
+	            },
+	            {
+	              "value": "PENDING",
+	              "prompt": "PENDING"
+	            }
+	          ]
+	        }
+	      ]
+	    }
+	  }
+	}
+	
+Listing transfers GET /api/transfer
+===================================
+
+Next step for browsing the API is going into api/transfer to list the current transfers
+
+	{
+	  "_embedded": {
+	    "halforms:transferList": [
+	      {
+	        "id": 1,
+	        "fromAccount": "1111201202332",
+	        "toAccount": "3333299999332",
+	        "description": "Transfer1",
+	        "amount": 0.0,
+	        "date": 0,
+	        "type": "INTERNATIONAL",
+	        "status": "COMPLETED",
+	        "email": "ander@dummy.com",
+	        "_links": {
+	          "self": {
+	            "href": "http://127.0.0.1:8080/api/transfer/1"
+	          },
+	          "halforms:modify": {
+	            "href": "http://127.0.0.1:8080/api/transfer/1"
+	          },
+	          "halforms:delete": {
+	            "href": "http://127.0.0.1:8080/api/transfer/1"
+	          }
+	        }
+	      },
+	      {
+	        "id": 2,
+	        "fromAccount": "3333299999332",
+	        "toAccount": "1111201202332",
+	        "description": "Transfer2",
+	        "amount": 0.0,
+	        "date": 1000,
+	        "type": "NATIONAL",
+	        "status": "PENDING",
+	        "email": "ander@dummy.com",
+	        "_links": {
+	          "self": {
+	            "href": "http://127.0.0.1:8080/api/transfer/2"
+	          },
+	          "halforms:modify": {
+	            "href": "http://127.0.0.1:8080/api/transfer/2"
+	          },
+	          "halforms:delete": {
+	            "href": "http://127.0.0.1:8080/api/transfer/2"
+	          }
+	        }
+	      }
+	    ]
+	  },
+	  "_links": {
+	    "self": {
+	      "href": "http://127.0.0.1:8080/api/transfer"
+	    },
+	    "halforms:list-after-date-transfers": {
+	      "href": "http://127.0.0.1:8080/api/transfer/filter{?dateFrom,dateTo,status}",
+	      "templated": true
+	    },
+	    "curies": [
+	      {
+	        "href": "http://127.0.0.1:8080/doc/{rel}",
+	        "name": "halforms",
+	        "templated": true
+	      }
+	    ]
+	  }
+	}
+
+In this URL the following new operations are defined
+
+* [get-transfer](http://127.0.0.1:8080/api/transfer/{id}): URL to GET each transfer, shown as self link of each resource
+* [modify](http://127.0.0.1:8080/api/transfer/{id}): URL to modify (PUT) each transfer, shown as modify link of each resource
+* [delete](http://127.0.0.1:8080/api/transfer/{id}): URL to DELETE each transfer, shown as delete link of each resource
+
+Additionally, again, documentation links are provided in this level also
+
+* [halforms:modify](http://127.0.0.1:8080/doc/modify): HAL-FORMS document for PUTing a transfer
+* [halforms:delete](http://127.0.0.1:8080/doc/delete): HAL-FORMS document for DELETEing a transfer
+
+	{
+	  "_links": {
+	    "self": {
+	      "href": "http://127.0.0.1:8080/doc/delete"
+	    }
+	  },
+	  "_templates": {
+	    "default": {
+	      "method": "DELETE"
+	    }
+	  }
+	}

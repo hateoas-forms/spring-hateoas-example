@@ -31,17 +31,14 @@ public class DocController {
 		if (Operations.LIST_AFTER_DATE_TRANSFERS.equals(rel)) {
 			builder.and(linkTo(methodOn(TransferController.class).getFiltered((Date) null, (Date) null, null)));
 		}
-		else if (Operations.MODIFY.equals(rel) || Operations.DELETE.equals(rel)) {
-			AffordanceBuilder getByIdBuilder = linkTo(methodOn(TransferController.class).get(0));
-			AffordanceBuilder editTransferBuilder = linkTo(methodOn(TransferController.class).modifyTransfer(0, null, null));
-			AffordanceBuilder deleteTransferBuilder = linkTo(methodOn(TransferController.class).deleteTransfer(0));
-			builder.and(getByIdBuilder).and(editTransferBuilder).and(deleteTransferBuilder);
-
+		else if (Operations.MODIFY.equals(rel)) {
+			builder.and(linkTo(methodOn(TransferController.class).modifyTransfer(0, null, null)));
+		}
+		else if (Operations.DELETE.equals(rel)) {
+			builder.and(linkTo(methodOn(TransferController.class).deleteTransfer(0)));
 		}
 		else if (Operations.MAKE_TRANSFER.equals(rel)) {
-			AffordanceBuilder getByIdBuilder = linkTo(methodOn(TransferController.class).get());
-			AffordanceBuilder transferBuilder = linkTo(methodOn(TransferController.class).transfer(null, null));
-			builder.and(getByIdBuilder).and(transferBuilder);
+			builder.and(linkTo(methodOn(TransferController.class).transfer(null, null)));
 		}
 		resourceSupport.add(builder.withSelfRel());
 		return resourceSupport;
