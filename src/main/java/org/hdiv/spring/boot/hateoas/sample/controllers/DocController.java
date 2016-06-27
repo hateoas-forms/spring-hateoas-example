@@ -38,7 +38,7 @@ public class DocController {
 			builder.and(getByIdBuilder).and(editTransferBuilder).and(deleteTransferBuilder);
 
 		}
-		else if ("make-transfer".equals(rel)) {
+		else if (Operations.MAKE_TRANSFER.equals(rel)) {
 			AffordanceBuilder getByIdBuilder = linkTo(methodOn(TransferController.class).get());
 			AffordanceBuilder transferBuilder = linkTo(methodOn(TransferController.class).transfer(null, null));
 			builder.and(getByIdBuilder).and(transferBuilder);
