@@ -53,6 +53,7 @@ Additionally documentation links are provided in this URL template http://127.0.
 
 * [halforms:make-transfer](http://127.0.0.1:8080/doc/make-transfer): HAL-FORMS document for POSTing a transfer
 
+
 	{
 	  "_embedded": {
 	    "halforms:cashAccountList": [
@@ -170,7 +171,9 @@ Additionally documentation links are provided in this URL template http://127.0.
 	  }
 	}
 
+
 * [halforms:list-after-date-transfers](http://127.0.0.1:8080/doc/list-after-date-transfers): HAL-FORMS document for filtering transfers by date (GET)
+
 
 	{
 	  "_links": {
@@ -212,11 +215,13 @@ Additionally documentation links are provided in this URL template http://127.0.
 	    }
 	  }
 	}
+
 	
 Listing transfers GET /api/transfer
 ===================================
 
 Next step for browsing the API is going into api/transfer to list the current transfers
+
 
 	{
 	  "_embedded": {
@@ -285,6 +290,7 @@ Next step for browsing the API is going into api/transfer to list the current tr
 	  }
 	}
 
+
 In this URL the following new operations are defined
 
 * [get-transfer](http://127.0.0.1:8080/api/transfer/{id}): URL to GET each transfer, shown as self link of each resource
@@ -294,6 +300,7 @@ In this URL the following new operations are defined
 Additionally, again, documentation links are provided in this level also
 
 * [halforms:modify](http://127.0.0.1:8080/doc/modify): HAL-FORMS document for PUTing a transfer
+
 
 	{
 	  "_embedded": {
@@ -412,7 +419,9 @@ Additionally, again, documentation links are provided in this level also
 	  }
 	}
 
+
 * [halforms:delete](http://127.0.0.1:8080/doc/delete): HAL-FORMS document for DELETEing a transfer
+
 
 	{
 	  "_links": {
@@ -426,3 +435,6 @@ Additionally, again, documentation links are provided in this level also
 	    }
 	  }
 	}
+	
+
+	
