@@ -303,7 +303,9 @@ In this URL the following new operations are defined
 Additionally, again, documentation links are provided in this level also
 
 * [halforms:modify](http://127.0.0.1:8080/doc/modify): HAL-FORMS document for PUTing a transfer
+* [halforms:delete](http://127.0.0.1:8080/doc/delete): HAL-FORMS document for DELETEing a transfer
 
+GET http://127.0.0.1:8080/doc/modify
 
 	{
 	  "_embedded": {
@@ -422,9 +424,7 @@ Additionally, again, documentation links are provided in this level also
 	  }
 	}
 
-
-* [halforms:delete](http://127.0.0.1:8080/doc/delete): HAL-FORMS document for DELETEing a transfer
-
+GET http://127.0.0.1:8080/doc/delete
 
 	{
 	  "_links": {
