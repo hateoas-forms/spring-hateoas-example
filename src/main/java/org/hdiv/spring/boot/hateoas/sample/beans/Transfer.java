@@ -5,6 +5,7 @@ import java.util.Date;
 import de.escalon.hypermedia.action.Input;
 import de.escalon.hypermedia.action.Select;
 import de.escalon.hypermedia.action.Type;
+import de.escalon.hypermedia.affordance.SuggestType;
 
 public class Transfer {
 
@@ -90,11 +91,11 @@ public class Transfer {
 		this.id = id;
 	}
 
-	public void setFromAccount(@Select(options = CashAccountOptions.class) final String fromAccount) {
+	public void setFromAccount(@Select(options = CashAccountOptions.class, type = SuggestType.EXTERNAL) final String fromAccount) {
 		this.fromAccount = fromAccount;
 	}
 
-	public void setToAccount(@Select(options = CashAccountFilteredOptions.class) final String toAccount) {
+	public void setToAccount(@Select(options = CashAccountFilteredOptions.class, type = SuggestType.REMOTE) final String toAccount) {
 		this.toAccount = toAccount;
 	}
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import de.escalon.hypermedia.action.Options;
 import de.escalon.hypermedia.affordance.Suggest;
 import de.escalon.hypermedia.affordance.SuggestImpl;
-import de.escalon.hypermedia.affordance.SuggestType;
 
 @Component
 public class CashAccountOptions implements Options<CashAccount> {
@@ -18,8 +17,8 @@ public class CashAccountOptions implements Options<CashAccount> {
 	private CashAccountController controller;
 
 	@Override
-	public List<Suggest<CashAccount>> get(final SuggestType type, final String[] value, final Object... args) {
-		return SuggestImpl.wrap(controller.getCashAccounts(), "number", "description", SuggestType.EXTERNAL);
+	public List<Suggest<CashAccount>> get(final String[] value, final Object... args) {
+		return SuggestImpl.wrap(controller.getCashAccounts(), "number", "description");
 	}
 
 }
