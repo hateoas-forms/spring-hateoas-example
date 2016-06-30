@@ -42,6 +42,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.escalon.hypermedia.spring.halforms.HalFormsMessageConverter;
+import de.escalon.hypermedia.spring.xhtml.XhtmlResourceMessageConverter;
 
 @Configuration
 @EnableAutoConfiguration
@@ -83,6 +84,7 @@ public class SampleHdivApplication {
 			public void configureMessageConverters(final List<HttpMessageConverter<?>> converters) {
 				converters.add(halMessageConverter());
 				converters.add(halFormsMessageConverter());
+				converters.add(new XhtmlResourceMessageConverter());
 				super.configureMessageConverters(converters);
 			}
 		};
