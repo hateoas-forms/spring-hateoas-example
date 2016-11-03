@@ -2,10 +2,10 @@ package org.hdiv.spring.boot.hateoas.sample.beans;
 
 import java.util.Date;
 
-import de.escalon.hypermedia.action.Input;
-import de.escalon.hypermedia.action.Select;
-import de.escalon.hypermedia.action.Type;
-import de.escalon.hypermedia.affordance.SuggestType;
+import com.github.hateoas.forms.action.Input;
+import com.github.hateoas.forms.action.Select;
+import com.github.hateoas.forms.action.Type;
+import com.github.hateoas.forms.affordance.SuggestType;
 
 public class Transfer {
 

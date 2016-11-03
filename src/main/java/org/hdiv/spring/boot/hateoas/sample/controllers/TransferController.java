@@ -1,7 +1,7 @@
 package org.hdiv.spring.boot.hateoas.sample.controllers;
 
-import static de.escalon.hypermedia.spring.AffordanceBuilder.linkTo;
-import static de.escalon.hypermedia.spring.AffordanceBuilder.methodOn;
+import static com.github.hateoas.forms.spring.AffordanceBuilder.linkTo;
+import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.escalon.hypermedia.action.Input;
-import de.escalon.hypermedia.action.Type;
+import com.github.hateoas.forms.action.Input;
+import com.github.hateoas.forms.action.Type;
 
 @RestController
 @RequestMapping(value = "/api/transfer")

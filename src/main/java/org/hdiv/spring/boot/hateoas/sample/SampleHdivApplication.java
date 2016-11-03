@@ -40,9 +40,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.escalon.hypermedia.spring.halforms.HalFormsMessageConverter;
-import de.escalon.hypermedia.spring.xhtml.XhtmlResourceMessageConverter;
+import com.github.hateoas.forms.spring.halforms.HalFormsMessageConverter;
+import com.github.hateoas.forms.spring.xhtml.XhtmlResourceMessageConverter;
 
 @Configuration
 @EnableAutoConfiguration

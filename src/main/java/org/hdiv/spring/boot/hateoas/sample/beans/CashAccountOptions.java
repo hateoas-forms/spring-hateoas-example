@@ -6,9 +6,9 @@ import org.hdiv.spring.boot.hateoas.sample.controllers.CashAccountController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import de.escalon.hypermedia.action.Options;
-import de.escalon.hypermedia.affordance.Suggest;
-import de.escalon.hypermedia.affordance.SuggestImpl;
+import com.github.hateoas.forms.action.Options;
+import com.github.hateoas.forms.affordance.Suggest;
+import com.github.hateoas.forms.affordance.SuggestImpl;
 
 @Component
 public class CashAccountOptions implements Options<CashAccount> {

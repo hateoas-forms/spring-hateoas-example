@@ -1,7 +1,7 @@
 package org.hdiv.spring.boot.hateoas.sample.controllers;
 
-import static de.escalon.hypermedia.spring.AffordanceBuilder.linkTo;
-import static de.escalon.hypermedia.spring.AffordanceBuilder.methodOn;
+import static com.github.hateoas.forms.spring.AffordanceBuilder.linkTo;
+import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.escalon.hypermedia.spring.AffordanceBuilder;
+import com.github.hateoas.forms.spring.AffordanceBuilder;
 
 @RestController
 @RequestMapping("/doc")

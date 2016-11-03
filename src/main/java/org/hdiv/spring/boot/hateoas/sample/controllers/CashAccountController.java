@@ -1,7 +1,7 @@
 package org.hdiv.spring.boot.hateoas.sample.controllers;
 
-import static de.escalon.hypermedia.spring.AffordanceBuilder.linkTo;
-import static de.escalon.hypermedia.spring.AffordanceBuilder.methodOn;
+import static com.github.hateoas.forms.spring.AffordanceBuilder.linkTo;
+import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;
 
 import java.util.ArrayList;
 import java.util.List;
