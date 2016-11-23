@@ -7,7 +7,7 @@ How to build the application
 ============================
 Clone this repo and build it (you'll need Git and Maven installed):
 
-    git clone git://github.com/hdiv/spring-hateoas-example.git
+    git clone git://github.com/hateoas-forms/spring-hateoas-example.git
     cd spring-hateoas-example
     mvn package
     

@@ -1,4 +1,4 @@
-package org.hdiv.spring.boot.hateoas.sample.beans;
+package spring.boot.hateoas.sample.beans;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package org.hdiv.spring.boot.hateoas.sample.controllers;
+package spring.boot.hateoas.sample.controllers;
 
 import static com.github.hateoas.forms.spring.AffordanceBuilder.linkTo;
 import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;
@@ -9,10 +9,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.hdiv.spring.boot.hateoas.sample.beans.Transfer;
-import org.hdiv.spring.boot.hateoas.sample.beans.TransferStatus;
-import org.hdiv.spring.boot.hateoas.sample.beans.TransferType;
-import org.hdiv.spring.boot.hateoas.sample.controllers.resources.TransferResource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
@@ -28,6 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.hateoas.forms.action.Input;
 import com.github.hateoas.forms.action.Type;
+
+import spring.boot.hateoas.sample.beans.Transfer;
+import spring.boot.hateoas.sample.beans.TransferStatus;
+import spring.boot.hateoas.sample.beans.TransferType;
+import spring.boot.hateoas.sample.controllers.resources.TransferResource;
 
 @RestController
 @RequestMapping(value = "/api/transfer")

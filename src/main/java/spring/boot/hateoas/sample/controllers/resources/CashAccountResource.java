@@ -1,11 +1,12 @@
-package org.hdiv.spring.boot.hateoas.sample.controllers.resources;
+package spring.boot.hateoas.sample.controllers.resources;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
-import org.hdiv.spring.boot.hateoas.sample.beans.CashAccount;
-import org.hdiv.spring.boot.hateoas.sample.controllers.CashAccountController;
 import org.springframework.hateoas.Resource;
+
+import spring.boot.hateoas.sample.beans.CashAccount;
+import spring.boot.hateoas.sample.controllers.CashAccountController;
 
 public class CashAccountResource extends Resource<CashAccount> {
 

@@ -1,15 +1,16 @@
-package org.hdiv.spring.boot.hateoas.sample.beans;
+package spring.boot.hateoas.sample.beans;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.hdiv.spring.boot.hateoas.sample.controllers.CashAccountController;
 import org.springframework.hateoas.Link;
 
 import com.github.hateoas.forms.action.Options;
 import com.github.hateoas.forms.affordance.Suggest;
 import com.github.hateoas.forms.affordance.SuggestImpl;
 import com.github.hateoas.forms.spring.AffordanceBuilder;
+
+import spring.boot.hateoas.sample.controllers.CashAccountController;
 
 public class CashAccountFilteredOptions implements Options<String> {
 	@Override

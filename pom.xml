@@ -6,13 +6,13 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.3.0.RELEASE</version>
 	</parent>
-	<groupId>org.hdiv</groupId>
+	<groupId>com.github.hateoas-forms.samples</groupId>
 	<artifactId>spring-boot-hateoas-example</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<url>http://www.hdiv.org</url>
-	<description>HDIV starter commons for Spring Boot</description>
+	<url>https://github.com/hateoas-forms</url>
+	<description>Spring Boot Hateoas sample</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

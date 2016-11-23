@@ -1,4 +1,4 @@
-package org.hdiv.spring.boot.hateoas.sample.controllers;
+package spring.boot.hateoas.sample.controllers;
 
 import static com.github.hateoas.forms.spring.AffordanceBuilder.linkTo;
 import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;

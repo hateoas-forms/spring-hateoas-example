@@ -1,4 +1,4 @@
-package org.hdiv.spring.boot.hateoas.sample.controllers;
+package spring.boot.hateoas.sample.controllers;
 
 import static com.github.hateoas.forms.spring.AffordanceBuilder.linkTo;
 import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;
@@ -6,14 +6,15 @@ import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hdiv.spring.boot.hateoas.sample.beans.CashAccount;
-import org.hdiv.spring.boot.hateoas.sample.controllers.resources.CashAccountResource;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import spring.boot.hateoas.sample.beans.CashAccount;
+import spring.boot.hateoas.sample.controllers.resources.CashAccountResource;
 
 /**
  * Returns the cash accounts to be used in Transfers, in this example no other operation can be done on Accounts

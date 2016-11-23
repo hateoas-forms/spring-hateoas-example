@@ -1,14 +1,15 @@
-package org.hdiv.spring.boot.hateoas.sample.controllers.resources;
+package spring.boot.hateoas.sample.controllers.resources;
 
 import static com.github.hateoas.forms.spring.AffordanceBuilder.linkTo;
 import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;
 
-import org.hdiv.spring.boot.hateoas.sample.beans.Transfer;
-import org.hdiv.spring.boot.hateoas.sample.controllers.TransferController;
-import org.hdiv.spring.boot.hateoas.sample.controllers.TransferController.Operations;
 import org.springframework.hateoas.Resource;
 
 import com.github.hateoas.forms.spring.AffordanceBuilder;
+
+import spring.boot.hateoas.sample.beans.Transfer;
+import spring.boot.hateoas.sample.controllers.TransferController;
+import spring.boot.hateoas.sample.controllers.TransferController.Operations;
 
 public class TransferResource extends Resource<Transfer> {
 

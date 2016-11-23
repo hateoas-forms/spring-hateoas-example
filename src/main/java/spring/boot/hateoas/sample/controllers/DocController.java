@@ -1,11 +1,10 @@
-package org.hdiv.spring.boot.hateoas.sample.controllers;
+package spring.boot.hateoas.sample.controllers;
 
 import static com.github.hateoas.forms.spring.AffordanceBuilder.linkTo;
 import static com.github.hateoas.forms.spring.AffordanceBuilder.methodOn;
 
 import java.util.Date;
 
-import org.hdiv.spring.boot.hateoas.sample.controllers.TransferController.Operations;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.hateoas.forms.spring.AffordanceBuilder;
+
+import spring.boot.hateoas.sample.controllers.TransferController.Operations;
 
 @RestController
 @RequestMapping("/doc")

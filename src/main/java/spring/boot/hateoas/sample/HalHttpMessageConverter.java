@@ -1,4 +1,4 @@
-package org.hdiv.spring.boot.hateoas.sample;
+package spring.boot.hateoas.sample;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
